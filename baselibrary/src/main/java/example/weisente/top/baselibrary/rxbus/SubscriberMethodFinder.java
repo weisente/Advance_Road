@@ -51,11 +51,13 @@ public class SubscriberMethodFinder {
                     if(parameterTypes.length == 1){
                         //获取是否有Subscribe注解
                         Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
+
+
                         if (subscribeAnnotation != null) {
                             //获取是什么线程会调
                             ThreadMode threadMode = subscribeAnnotation.threadMode();
+                            //查看是否是粘性的
                             Class<?> eventType = parameterTypes[0];//输入参数只有一个嘛  也就是他的事件类型
-                            subscriberMethods.add(new SubscriberMethod(method, eventType, getThreadMode(threadMode)));
                         }
                     }
                 }

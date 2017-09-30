@@ -15,10 +15,12 @@ public class SubscriberMethod {
     final Method method;
     final Class<?> eventType;
 
+
     public SubscriberMethod(Method method, Class<?> eventType,Scheduler threadMode) {
         this.method = method;
         this.eventType = eventType;
         this.threadMode = threadMode;
+
     }
     public Method getMethod() {
         return method;

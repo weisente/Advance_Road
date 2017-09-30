@@ -23,6 +23,7 @@ public class RxBus2 {
 
     private static Map<Class<?>, Map<Class<?>, Disposable>> mDisposableMap = new HashMap<>();
 
+
     private RxBus2(){
         mFlowableProcessor = PublishProcessor.create().toSerialized();
         //通过注解反射获取方法
@@ -48,6 +49,7 @@ public class RxBus2 {
     public void register(Object subsciber){
         //获取当前的类
         Class<?> subsciberClass = subsciber.getClass();
+        //避免重复添加  做判断
 
         List<SubscriberMethod> subscriberMethods = mSubscriberMethodFinder.findSubscriberMethods(subsciberClass);
         for (SubscriberMethod subscriberMethod : subscriberMethods) {
