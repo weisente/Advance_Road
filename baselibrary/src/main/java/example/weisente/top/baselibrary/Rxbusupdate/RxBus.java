@@ -19,7 +19,7 @@ import io.reactivex.subjects.Subject;
 /**
  * Created by san on 2017/9/30.
  * 加入粘性 以及各种思路升级
- *新思路
+ *
  *
  *
  *
