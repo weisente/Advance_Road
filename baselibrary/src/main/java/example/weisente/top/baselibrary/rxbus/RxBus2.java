@@ -36,7 +36,7 @@ public class RxBus2 {
         private Map<Object, Object> subscribersMap = new HashMap<>();
         //存储所有订阅者返回的Disposable,便于取消订阅
         private Map<Object, List<Disposable>> disposablesMap = new HashMap<>();
-        //存储所有订阅的方法中带有@Subscribe方法的信息
+        //存储所有订阅的方法中带有@Subscribe方法的信息  key为注册的类 value是该类里面的注册的方法
         private Map<Object, List<SubscriberMethodInfo>> subscriberMethodInfosMap = new HashMap<>();
         //存储所有粘性事件
         private final Map<Class<?>, StickyMessage> stickyEventMap = new ConcurrentHashMap<>();
@@ -130,12 +130,13 @@ public class RxBus2 {
                 return;
             }
             Class<?> subClass = subscriber.getClass();
+            //获取所有默认的方法
             Method[] methods = subClass.getDeclaredMethods();
             for (Method method : methods) {
                 if (method.isAnnotationPresent(Subscribe.class)) {
                     //获得参数类型
                     Class[] parameterType = method.getParameterTypes();
-                    //参数不为空 且参数个数为1
+                    //参数不为空 且参数个数为1  高仿Eventbus
                     if (parameterType != null && parameterType.length == 1) {
                         Subscribe sub = method.getAnnotation(Subscribe.class);
                         int code = sub.code();
@@ -143,6 +144,7 @@ public class RxBus2 {
                         boolean receiveStickyEvent = sub.receiveStickyEvent();
 
                         Class eventType = parameterType[0];
+                        //把方法的注解信息与方法参数封装成一个bean
                         SubscriberMethodInfo subscriberMethodInfo = new SubscriberMethodInfo(subscriber,
                                 method, eventType, code, threadMode, receiveStickyEvent);
 
