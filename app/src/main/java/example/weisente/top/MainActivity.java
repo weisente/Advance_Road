@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_fragmentA, new FragmentA()).commit();
         Button button = (Button) findViewById(R.id.text_view);
-//        RxBus2.getDefault().register(this   );
 //        new Integer()
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RxBus2.getDefault().post(new Integer(1) );
+//                RxBus2.getDefault().post(new Integer(1) );
+                RxBus2.getInstance().post(new Integer(1123));
             }
         });
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        RxBus2.getDefault().unregister(this);
+
     }
 
 }

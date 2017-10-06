@@ -6,12 +6,22 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Created by san on 2017/10/6.
+ */
 
 @Documented
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD})
 public @interface Subscribe {
+
+    /** 标识code，默认为-1，see {@link RxBus2#post(Object)} and {@link RxBus2#post(int, Object)} */
+    int code() default -1;
+
     /** 标识方法所运行的线程 */
-    ThreadMode threadMode() default ThreadMode.MAIN;
+    ThreadMode threadMode() default ThreadMode.CURRENT_THREAD;
+
+    /** 标识方法是否接收粘性事件 */
+    boolean receiveStickyEvent() default false;
 
 }

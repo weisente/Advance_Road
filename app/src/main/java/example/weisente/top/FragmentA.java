@@ -11,6 +11,7 @@ import android.widget.Toast;
 import example.weisente.top.baselibrary.rxbus.RxBus2;
 import example.weisente.top.baselibrary.rxbus.Subscribe;
 
+
 /**
 
  */
@@ -22,7 +23,7 @@ public class FragmentA extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
             savedInstanceState) {
-        RxBus2.getDefault().register(this);
+
         return inflater.inflate(R.layout.fragment_a, container, false);
     }
 
@@ -35,7 +36,8 @@ public class FragmentA extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+//        RxBus2.getDefault().register(this);
+        RxBus2.getInstance().register(this);
     }
     //
     @Subscribe
@@ -43,4 +45,9 @@ public class FragmentA extends Fragment {
         Toast.makeText(getContext(),"tip"+value,Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus2.getInstance().unRegister(this);
+    }
 }

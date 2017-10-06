@@ -1,20 +1,18 @@
-package example.weisente.top.baselibrary.Rxbusupdate;
+package example.weisente.top.baselibrary.rxbus;
 
 import java.lang.reflect.Method;
 
 /**
- * Created by san on 2017/9/30.
+ * Created by san on 2017/10/6.
  */
 
 public class SubscriberMethodInfo {
-
     private Object subscriber;
     private Method method;
     private Class<?> eventType;
     private int code;
     private ThreadMode threadMode;
     private boolean receiveStickyEvent;
-
 
     /**
      * 订阅者方法信息
@@ -26,12 +24,12 @@ public class SubscriberMethodInfo {
      * @param threadMode         线程类型{@link ThreadMode}
      * @param receiveStickyEvent 是否接收粘性事件
      */
-    public SubscriberMethodInfo(Object subscriber, Method method, Class<?> eventType, int code, ThreadMode threadMode, boolean receiveStickyEvent) {
-        this.subscriber = subscriber;
+    SubscriberMethodInfo(Object subscriber, Method method, Class<?> eventType, int code, ThreadMode threadMode, boolean receiveStickyEvent) {
         this.method = method;
-        this.eventType = eventType;
-        this.code = code;
         this.threadMode = threadMode;
+        this.eventType = eventType;
+        this.subscriber = subscriber;
+        this.code = code;
         this.receiveStickyEvent = receiveStickyEvent;
     }
 
@@ -86,11 +84,11 @@ public class SubscriberMethodInfo {
     @Override
     public String toString() {
         return "SubscriberMethodInfo{" +
-                "subscriber=" + subscriber +
-                ", method=" + method +
-                ", eventType=" + eventType +
-                ", code=" + code +
+                "method=" + method +
                 ", threadMode=" + threadMode +
+                ", eventType=" + eventType +
+                ", subscriber=" + subscriber +
+                ", code=" + code +
                 ", receiveStickyEvent=" + receiveStickyEvent +
                 '}';
     }
