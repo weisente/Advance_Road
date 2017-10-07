@@ -1,35 +1,49 @@
 package example.weisente.top;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import example.weisente.top.baselibrary.rxbus.RxBus2;
+import butterknife.Bind;
+import example.weisente.top.baselibrary.base.BaseActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+
+    @Bind(R.id.text_view)
+    Button textView;
+    @Bind(R.id.text_view1)
+    TextView textView1;
+    @Bind(R.id.fl_fragmentA)
+    FrameLayout flFragmentA;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_fragmentA, new FragmentA()).commit();
-        Button button = (Button) findViewById(R.id.text_view);
-//        new Integer()
-        button.setOnClickListener(new View.OnClickListener() {
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                RxBus2.getDefault().post(new Integer(1) );
-                RxBus2.getInstance().post(new Integer(1123));
+                Toast.makeText(getApplicationContext(),2/0+"测试成功",Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void initTitle() {
 
     }
+
+    @Override
+    protected void setContentView() {
+        setContentView(R.layout.activity_main);
+    }
+
 
 }

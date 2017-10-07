@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         minSdkVersion 15
@@ -28,12 +28,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
-
-
-
-    // rxjava
-    compile 'io.reactivex.rxjava2:rxjava:2.0.1'// 推荐同时加载RxJava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'// RxAndroid
-    //找控件神器  通过apt
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile project(path: ':baselibrary')
+    compile 'com.alipay.euler:andfix:0.5.0@aar'
 }
