@@ -117,7 +117,7 @@ public class RxBus2 {
                 stickyEventKeys.add(o.getClass());
                 stickyEventMap.put(o.getClass(), stickyMessage);
 
-                printlnStickyEvent();
+//                printlnStickyEvent();
             }
 
             bus.onNext(stickyMessage);
@@ -222,7 +222,7 @@ public class RxBus2 {
                                             stickyMessage.setCanExecuteTimes(stickyMessage.getCanExecuteTimes() - methodInfos.size());
                                         }
                                     }
-                                    printlnStickyEvent();
+//                                    printlnStickyEvent();
                                 }
 
                                 return methodInfos;
@@ -462,17 +462,7 @@ public class RxBus2 {
             }
         }
 
-        private void printlnStickyEvent() {
-//            JRxBusLog.d(TAG, "==========stickyEventMap size:" + stickyEventMap.size() + ", key size:" + stickyEventKeys.size());
-            int position = 0;
-            for (Map.Entry<Class<?>, StickyMessage> entry : stickyEventMap.entrySet()) {
-                String msg = entry.getKey().getName() + "[" +
-                        entry.getValue().getCanExecuteTimes() + ", " + entry.getValue().getObject() +
-                        "]";
-//                JRxBusLog.d(TAG, "stickyEvent(" + position + ")->" + msg);
-                position++;
-            }
-        }
+
 
 
 }
