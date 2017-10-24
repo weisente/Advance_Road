@@ -18,7 +18,7 @@ public class LoadManager {
     //内部类
     private Builder builder;
 
-    //DCL  你东
+    //DCL
     public static LoadManager getDefault() {
         if (loadManager == null) {
             synchronized (LoadManager.class) {
@@ -29,7 +29,13 @@ public class LoadManager {
         }
         return loadManager;
     }
+    private LoadManager() {
+        this.builder = new Builder();
+    }
 
+    private void setBuilder(@NonNull Builder builder) {
+        this.builder = builder;
+    }
 
     public static class Builder {
         //用户信添加的callback
@@ -55,9 +61,9 @@ public class LoadManager {
         Class<? extends BaseCallback> getDefaultCallback() {
             return defaultCallback;
         }
-//        public void commit() {
-////            getDefault().setBuilder(this);
-////        }
+        public void commit() {
+            getDefault().setBuilder(this);
+        }
 
 //        public LoadManager build() {
 //            return new LoadManager(this);
