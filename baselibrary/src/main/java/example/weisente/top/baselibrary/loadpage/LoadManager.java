@@ -1,0 +1,68 @@
+package example.weisente.top.baselibrary.loadpage;
+
+import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import example.weisente.top.baselibrary.loadpage.callback.BaseCallback;
+
+/**
+ * Created by san on 2017/10/24.
+ */
+
+public class LoadManager {
+
+    //全局单例的Manager  控制全局的显示
+    private static volatile LoadManager loadManager;
+    //内部类
+    private Builder builder;
+
+    //DCL  你东
+    public static LoadManager getDefault() {
+        if (loadManager == null) {
+            synchronized (LoadManager.class) {
+                if (loadManager == null) {
+                    loadManager = new LoadManager();
+                }
+            }
+        }
+        return loadManager;
+    }
+
+
+    public static class Builder {
+        //用户信添加的callback
+        private List<BaseCallback> callbacks = new ArrayList<>();
+        //基础的callback
+        private Class<? extends BaseCallback> defaultCallback;
+
+        public Builder addCallback(@NonNull BaseCallback callback) {
+            callbacks.add(callback);
+            return this;
+        }
+
+        public Builder setDefaultCallback(@NonNull Class<? extends BaseCallback> defaultCallback) {
+            this.defaultCallback = defaultCallback;
+            return this;
+        }
+
+        List<BaseCallback> getCallbacks() {
+            return callbacks;
+        }
+
+
+        Class<? extends BaseCallback> getDefaultCallback() {
+            return defaultCallback;
+        }
+//        public void commit() {
+////            getDefault().setBuilder(this);
+////        }
+
+//        public LoadManager build() {
+//            return new LoadManager(this);
+////        }
+
+    }
+
+}
