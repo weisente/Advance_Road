@@ -30,10 +30,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // 初始化数据
         initData();
+        //in order to recovery status
+        initData(savedInstanceState);
     }
 
     // 初始化数据
     protected abstract void initData();
+
+
+    protected void initData(Bundle savedInstanceState){
+
+    }
 
     // 初始化界面
     protected abstract void initView();

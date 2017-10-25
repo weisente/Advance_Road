@@ -29,6 +29,11 @@ public class LoadManager {
         }
         return loadManager;
     }
+
+    public static Builder beginBuilder() {
+        return new Builder();
+    }
+
     //默认构造器
     private LoadManager() {
         this.builder = new Builder();

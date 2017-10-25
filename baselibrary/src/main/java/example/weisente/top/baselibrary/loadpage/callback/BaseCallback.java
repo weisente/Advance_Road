@@ -11,9 +11,11 @@ import java.io.Serializable;
 
 /**
  * Created by san on 2017/10/24.
+ *
+ * object copy using Serializable
  */
 
-public abstract class BaseCallback {
+public abstract class BaseCallback implements Serializable {
     private View rootView;
     private Context context;
     //判断该视图 是否显示成功
