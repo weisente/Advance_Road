@@ -29,13 +29,40 @@ public class LoadManager {
         }
         return loadManager;
     }
+    //默认构造器
     private LoadManager() {
+        this.builder = new Builder();
+    }
+
+
+    private LoadManager(Builder builder) {
         this.builder = new Builder();
     }
 
     private void setBuilder(@NonNull Builder builder) {
         this.builder = builder;
     }
+
+    //using @NonNull  parameter can't be null
+    public LoadService register(@NonNull Object target){
+        return register(target,null,null);
+    }
+
+    public <T> LoadService register(Object tagert,BaseCallback.OnReloadListener onReloadListener ){
+        return register(tagert,onReloadListener,null);
+    }
+
+    public <T> LoadService register(Object target, BaseCallback.OnReloadListener onReloadListener, Convertor<T>
+            convertor) {
+        TargetContext targetContext = LoadManagerUtil.getTargetContext(target);
+        return new LoadService<>(convertor, targetContext, onReloadListener, builder);
+    }
+
+
+
+
+
+
 
     public static class Builder {
         //用户信添加的callback
@@ -67,8 +94,10 @@ public class LoadManager {
 
 //        public LoadManager build() {
 //            return new LoadManager(this);
-////        }
-
+//        }
+        public LoadManager build() {
+            return new LoadManager(this);
+        }
     }
 
 }
