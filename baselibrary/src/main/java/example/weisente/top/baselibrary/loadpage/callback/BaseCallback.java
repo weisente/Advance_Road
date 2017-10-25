@@ -3,6 +3,10 @@ package example.weisente.top.baselibrary.loadpage.callback;
 import android.content.Context;
 import android.view.View;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
@@ -82,8 +86,56 @@ public abstract class BaseCallback {
     }
 
 
+    public BaseCallback copy() {
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        ObjectOutputStream oos;
+        Object obj = null;
+        try {
+            oos = new ObjectOutputStream(bao);
+            oos.writeObject(this);
+            oos.close();
+            ByteArrayInputStream bis = new ByteArrayInputStream(bao.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            obj = ois.readObject();
+            ois.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (BaseCallback) obj;
+    }
+
+
     //setting the ReloadListener
     public interface OnReloadListener extends Serializable {
         void onReload(View v);
     }
+    //return
+    public View obtainRootView() {
+        if (rootView == null) {
+            rootView = View.inflate(context, onCreateView(), null);
+        }
+        return rootView;
+    }
+    //
+    public boolean getSuccessVisible() {
+        return successViewVisible;
+    }
+
+    /**
+     * Called when the rootView of Callback is removed from its LoadLayout.
+     *
+     */
+    public void onDetach() {
+    }
+
+    /**
+     * 生命周期
+     * life cycle
+     * * Called when the rootView of Callback is attached to its LoadLayout.
+     * @param context
+     * @param view
+     */
+    public void onAttach(Context context, View view) {
+    }
+
 }

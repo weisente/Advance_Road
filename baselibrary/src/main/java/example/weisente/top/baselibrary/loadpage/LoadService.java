@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import java.util.List;
 
 import example.weisente.top.baselibrary.loadpage.callback.BaseCallback;
+import example.weisente.top.baselibrary.loadpage.callback.SuccessCallback;
 
 /**
  * Created by Administrator on 2017/10/25 0025.
@@ -57,7 +58,7 @@ public class LoadService<T> {
         loadLayout.showCallback(SuccessCallback.class);
     }
 
-    public void showCallback(Class<? extends Callback> callback) {
+    public void showCallback(Class<? extends BaseCallback> callback) {
         loadLayout.showCallback(callback);
     }
 
@@ -101,6 +102,7 @@ public class LoadService<T> {
      */
     public LoadService<T> setCallBack(Class<? extends BaseCallback> callback, Transport transport) {
         loadLayout.setCallBack(callback, transport);
+//        loadLayout.setCa
         return this;
     }
 
