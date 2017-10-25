@@ -29,6 +29,7 @@ public class BaseApplication extends Application {
             PackageManager packageManager = this.getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(this.getPackageName(), 0);
             String versionName = packageInfo.versionName;
+//            。。
             mPatchManager.init(versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
