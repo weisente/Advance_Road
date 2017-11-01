@@ -16,6 +16,7 @@ public class RecycleviewMainActivity extends BaseActivity {
     @Override
     protected void initView() {
 
+
     }
 
     @Override
