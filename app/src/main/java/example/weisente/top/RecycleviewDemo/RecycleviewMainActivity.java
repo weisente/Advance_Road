@@ -15,22 +15,22 @@ import java.util.List;
 
 import example.weisente.top.R;
 import example.weisente.top.baselibrary.base.BaseActivity;
-import example.weisente.top.baselibrary.recycleviewbase.Decoration.DividerGridItemDecoration;
+import example.weisente.top.baselibrary.recycleviewbase.Decoration.RecyclerGridSpaceDecoration;
+import example.weisente.top.baselibrary.recycleviewbase.widget.WrapRecyclerView;
 
 /**
  * Created by san on 2017/11/1.
  */
 
 public class RecycleviewMainActivity extends BaseActivity {
-    private RecyclerView recyclerView;
+    private WrapRecyclerView recyclerView;
     private List<String> mDatas;
     private HomeAdapter mAdapter;
     @Override
     protected void initData() {
         Toast.makeText(getApplicationContext(),"asd",Toast.LENGTH_SHORT).show();
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
-//        recyclerView.setLayoutManager(n);
-//        new DividerItemDecoration()
+        recyclerView = (WrapRecyclerView) findViewById(R.id.rv);
+
         mDatas = new ArrayList<String>();
         for (int i = 'A'; i < 'z'; i++) {
             mDatas.add("" + (char) i);
@@ -38,9 +38,16 @@ public class RecycleviewMainActivity extends BaseActivity {
         mAdapter = new HomeAdapter(this, mDatas);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(this));
+        recyclerView.addItemDecoration(new RecyclerGridSpaceDecoration(30));
         // 设置item动画
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        TextView textView = new TextView(RecycleviewMainActivity.this);
+//        textView.setText("测试");
+//        textView.setGravity(Gravity.CENTER);
+//        recyclerView.addHeaderView(textView);
+//        recyclerView.addHeaderView(textView);
+//        recyclerView.addHeaderView(textView);
+//        mAdapter.notifyDataSetChanged();
     }
 
     @Override

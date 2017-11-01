@@ -29,7 +29,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        super.onDraw(c, parent, state);
+
         drawVertical(c, parent);
         drawHorizontal(c, parent);
     }
@@ -37,15 +37,13 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
     private void drawHorizontal(Canvas c, RecyclerView parent) {
         // 绘制水平间隔线
         int childCount = parent.getChildCount();
-        for (int i = 0; i < childCount; i++){
-            //获取每一个子view
+        for (int i = 0; i < childCount; i++) {
             View child = parent.getChildAt(i);
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            int left = child.getLeft() - params.leftMargin;//child.getLeft()  是每一个view的总体left偏移
+            int left = child.getLeft() - params.leftMargin;
             int right = child.getRight() + params.rightMargin + mDivider.getIntrinsicWidth();
             int top = child.getBottom() + params.bottomMargin;
             int bottom = top + mDivider.getIntrinsicHeight();
-            //设置分割线的长宽高
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }
@@ -54,7 +52,6 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
     private void drawVertical(Canvas c, RecyclerView parent) {
         //绘制垂直间隔线(垂直的矩形)
         int childCount = parent.getChildCount();
-
         for (int i = 0; i < childCount; i++) {
             View child = parent.getChildAt(i);
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
@@ -65,13 +62,14 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
         }
+        // 去掉右边的分割线
     }
 
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-//        super.getItemOffsets(outRect, view, parent, state);
-        // 四个方向的偏移值
+
+//        // 四个方向的偏移值
         int right = mDivider.getIntrinsicWidth();
         int bottom = mDivider.getIntrinsicHeight();
 
@@ -112,23 +110,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
         if (itemPosition > ((rowNumber - 1) * spanCount - 1)) {
             return true;
         }
-
         return false;
-
-
-//        //一行多少个item
-//        int spanCount = getSpanCount(parent);
-//        //获取一共多少个
-//        int itemCount = parent.getAdapter().getItemCount();
-//        //获取最后一行
-//        int lastRow = itemCount % spanCount == 0? itemCount / spanCount : itemCount / spanCount + 1;
-//
-//        int curRow = itemPosition % spanCount == 0? itemPosition / spanCount : itemPosition / spanCount + 1;
-//        if(lastRow == curRow){
-//            return true;
-//        }
-//        return false;
-
     }
 
 
