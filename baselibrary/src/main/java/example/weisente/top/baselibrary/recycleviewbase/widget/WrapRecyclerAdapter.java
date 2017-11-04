@@ -47,15 +47,15 @@ public class WrapRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // viewType 可能就是 SparseArray 的key
-//        if (isHeaderViewType(viewType)) {
-//            View headerView = mHeaderViews.get(viewType);
-//            return createHeaderFooterViewHolder(headerView);
-//        }
-//
-//        if (isFooterViewType(viewType)) {
-//            View footerView = mFooterViews.get(viewType);
-//            return createHeaderFooterViewHolder(footerView);
-//        }
+        if (isHeaderViewType(viewType)) {
+            View headerView = mHeaderViews.get(viewType);
+            return createHeaderFooterViewHolder(headerView);
+        }
+
+        if (isFooterViewType(viewType)) {
+            View footerView = mFooterViews.get(viewType);
+            return createHeaderFooterViewHolder(footerView);
+        }
         return mAdapter.onCreateViewHolder(parent, viewType);
     }
 

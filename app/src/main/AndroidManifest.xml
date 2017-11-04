@@ -14,14 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecycleviewDemo.HeadFootRecycleViewActivity">
+        <activity android:name=".SecondActivity"></activity>
+
+        <activity android:name=".RecycleviewDemo.HeadFootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"></activity>
         <!--<activity android:name=".CoordinatorLayoutDemo.CoodinatorActivity" />-->
     </application>
     <meta-data android:name="design_width" android:value="768">

@@ -67,7 +67,7 @@ public class RecycleviewMainActivity extends BaseActivity {
     }
 
 
-    class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
+    public static class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
         private List<String> mDatas;
         private LayoutInflater mInflater;
