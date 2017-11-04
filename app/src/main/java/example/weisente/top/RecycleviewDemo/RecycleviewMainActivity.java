@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class RecycleviewMainActivity extends BaseActivity {
     private HomeAdapter mAdapter;
     @Override
     protected void initData() {
-        Toast.makeText(getApplicationContext(),"asd",Toast.LENGTH_SHORT).show();
+
         recyclerView = (WrapRecyclerView) findViewById(R.id.rv);
 
         mDatas = new ArrayList<String>();

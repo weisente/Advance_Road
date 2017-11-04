@@ -138,7 +138,7 @@
     <color name="bg_splash_guide0">@color/white</color>
     <color name="bg_splash_guide1">@color/white</color>
     <color name="bg_splash_guide2">@color/white</color>
-    <color name="black">#ff000000</color>
+    <!--<color name="black">#ff000000</color>-->
     <color name="black_50_opacity">#80000000</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -163,9 +163,9 @@
     <color name="channel_topic">#ff333333</color>
     <color name="channel_topic_night">#ff5c6266</color>
     <color name="circle">#aa738ffe</color>
-    <color name="colorAccent">#ffff4081</color>
-    <color name="colorPrimary">#ff3f51b5</color>
-    <color name="colorPrimaryDark">#ff303f9f</color>
+    <!--<color name="colorAccent">#ffff4081</color>-->
+    <!--<color name="colorPrimary">#ff3f51b5</color>-->
+    <!--<color name="colorPrimaryDark">#ff303f9f</color>-->
     <color name="colorPrimaryStatusBar">#ff000000</color>
     <color name="color_0a0b0d">#ff0a0b0d</color>
     <color name="color_13161a">#ff13161a</color>
@@ -466,7 +466,7 @@
     <color name="pull_to_refresh_label_color">#ff575757</color>
     <color name="record_progress">#ffffb400</color>
     <color name="rect">#aae84e40</color>
-    <color name="red">#ffff0000</color>
+    <!--<color name="red">#ffff0000</color>-->
     <color name="refresh_tip_bg">#dc8c7d72</color>
     <color name="report_activity_input_content_color">#ff444444</color>
     <color name="report_activity_input_content_color_night">@color/default_text_night</color>
@@ -659,7 +659,7 @@
     <color name="video_record_progress_bg_color">#d03e3e3e</color>
     <color name="video_record_progress_color">#ffffb400</color>
     <color name="video_upload_type_chooser_dialog_shadow">#99000000</color>
-    <color name="white">#ffffffff</color>
+    <!--<color name="white">#ffffffff</color>-->
     <color name="white_50_opacity">#80ffffff</color>
     <color name="why_indicator_selected">#ff7d7d7d</color>
     <color name="why_indicator_unselected">#ffcecece</color>
