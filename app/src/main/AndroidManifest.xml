@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SecondActivity"></activity>
 
-        <activity android:name=".RecycleviewDemo.HeadFootActivity">
+        <activity android:name=".RecycleviewDemo.RefreshActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
