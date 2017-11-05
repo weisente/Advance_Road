@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SecondActivity"></activity>
 
-        <activity android:name=".RecycleviewDemo.RefreshLoadActivity">
+        <activity android:name=".RecycleviewDemo.BaseAdapterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
