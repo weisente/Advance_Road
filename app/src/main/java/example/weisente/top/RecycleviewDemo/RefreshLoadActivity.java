@@ -47,7 +47,7 @@ public class RefreshLoadActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        initData();
+//                        initData();
                         rv.onStopLoad();
 //                        mAdapter.notifyDataSetChanged();
                     }
