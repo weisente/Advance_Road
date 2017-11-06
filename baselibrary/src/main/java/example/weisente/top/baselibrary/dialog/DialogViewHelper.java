@@ -9,19 +9,23 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by san on 2017/11/5.
+ * Email 240336124@qq.com
+ * Created by Darren on 2017/2/21.
+ * Version 1.0
+ * Description: Dialog View的辅助处理类
  */
+class DialogViewHelper {
 
-public class DialogViewHelper {
     private View mContentView = null;
     // 防止霸气侧漏
     private SparseArray<WeakReference<View>> mViews;
-
 
     public DialogViewHelper(Context context, int layoutResId) {
         this();
         mContentView = LayoutInflater.from(context).inflate(layoutResId, null);
     }
+
+
     public DialogViewHelper() {
         mViews = new SparseArray<>();
     }

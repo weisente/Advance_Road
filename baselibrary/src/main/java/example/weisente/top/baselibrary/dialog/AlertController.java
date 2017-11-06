@@ -10,10 +10,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by san on 2017/11/5.
+ * Email 240336124@qq.com
+ * Created by Darren on 2017/2/21.
+ * Version 1.0
+ * Description:
  */
-
-public class AlertController {
+class AlertController {
 
     private AlertDialog mDialog;
     private Window mWindow;
@@ -28,7 +30,6 @@ public class AlertController {
     public void setViewHelper(DialogViewHelper viewHelper) {
         this.mViewHelper = viewHelper;
     }
-
 
     /**
      * 设置文本
@@ -54,7 +55,6 @@ public class AlertController {
         mViewHelper.setOnclickListener(viewId, listener);
     }
 
-
     /**
      * 获取Dialog
      *
@@ -73,8 +73,7 @@ public class AlertController {
         return mWindow;
     }
 
-
-    public static class AlertParams{
+    public static class AlertParams {
         public Context mContext;
         public int mThemeResId;
         // 点击空白是否能够取消  默认点击阴影可以取消
@@ -106,11 +105,7 @@ public class AlertController {
             this.mContext = context;
             this.mThemeResId = themeResId;
         }
-        /**
-         * 绑定和设置参数
-         *
-         * @param mAlert
-         */
+
         /**
          * 绑定和设置参数
          *
@@ -169,6 +164,5 @@ public class AlertController {
             params.height = mHeight;
             window.setAttributes(params);
         }
-
     }
 }

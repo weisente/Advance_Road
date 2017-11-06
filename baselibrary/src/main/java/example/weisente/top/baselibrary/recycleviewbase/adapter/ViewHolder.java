@@ -1,11 +1,12 @@
 package example.weisente.top.baselibrary.recycleviewbase.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import example.weisente.top.baselibrary.dialog.HolderImageLoader;
 
 /**
  * Created by san on 2017/11/1.
@@ -87,22 +88,22 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    /**
-     * 图片加载，这里稍微处理得复杂一些，因为考虑加载图片的第三方可能不太一样
-     * 也可以不写这个类
-     */
-    public static abstract class HolderImageLoader {
-        private String mImagePath;
-
-        public HolderImageLoader(String imagePath) {
-            this.mImagePath = imagePath;
-        }
-
-        public String getImagePath() {
-            return mImagePath;
-        }
-
-        public abstract void displayImage(Context context, ImageView imageView, String imagePath);
-    }
+//    /**
+//     * 图片加载，这里稍微处理得复杂一些，因为考虑加载图片的第三方可能不太一样
+//     * 也可以不写这个类
+//     */
+//    public static abstract class HolderImageLoader {
+//        private String mImagePath;
+//
+//        public HolderImageLoader(String imagePath) {
+//            this.mImagePath = imagePath;
+//        }
+//
+//        public String getImagePath() {
+//            return mImagePath;
+//        }
+//
+//        public abstract void displayImage(Context context, ImageView imageView, String imagePath);
+//    }
 
 }
