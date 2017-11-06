@@ -24,7 +24,6 @@ public class AlertDialog extends Dialog {
     public AlertDialog(Context context, int themeResId) {
         super(context, themeResId);
         mAlert = new AlertController(this, getWindow());
-//        imageLoader = new GlideImageLoader()
         imageLoader = new GlideImageLoader();
     }
 
