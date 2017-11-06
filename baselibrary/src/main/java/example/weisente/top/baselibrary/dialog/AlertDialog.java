@@ -8,12 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.hc.baselibrary.R;
+import example.weisente.top.baselibrary.R;
+
 
 /**
- * Email 240336124@qq.com
- * Created by Darren on 2017/2/21.
- * Version 1.0
+
  * Description: 自定义万能Dialog
  */
 public class AlertDialog extends Dialog {

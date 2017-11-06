@@ -10,9 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Email 240336124@qq.com
- * Created by Darren on 2017/2/21.
- * Version 1.0
+
  * Description:
  */
 class AlertController {

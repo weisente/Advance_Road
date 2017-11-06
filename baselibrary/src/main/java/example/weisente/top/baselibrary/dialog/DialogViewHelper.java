@@ -9,8 +9,7 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
 /**
- * Email 240336124@qq.com
- * Created by Darren on 2017/2/21.
+
  * Version 1.0
  * Description: Dialog View的辅助处理类
  */
