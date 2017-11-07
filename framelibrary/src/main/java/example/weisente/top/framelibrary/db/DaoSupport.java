@@ -5,13 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 import java.lang.reflect.Field;
 import java.util.List;
 
+import example.weisente.top.framelibrary.db.crud.QuerySupport;
+
 /**
  * Created by san on 2017/11/6.
  *
  * 主要实现增删改查
  */
 
-public class DaoSupport<T> implements IDaoSoupport<T>  {
+public class DaoSupport<T> implements IDaoSupport<T>  {
 
     // SQLiteDatabase
     private SQLiteDatabase mSqLiteDatabase;
@@ -56,7 +58,19 @@ public class DaoSupport<T> implements IDaoSoupport<T>  {
     }
 
     @Override
-    public List<T> query() {
+    public QuerySupport<T> querySupport() {
         return null;
     }
+
+    @Override
+    public int delete(String whereClause, String... whereArgs) {
+        return 0;
+    }
+
+    @Override
+    public int update(T obj, String whereClause, String... whereArgs) {
+        return 0;
+    }
+
+
 }

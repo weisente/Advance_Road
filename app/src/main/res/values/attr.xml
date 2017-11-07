@@ -3,4 +3,10 @@
     <declare-styleable name="Follow">
         <attr name="target" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="Mytextview">
+        <attr name="mytext" format="string"/>
+        <attr name="mytextsize" format="dimension"/>
+        <attr name="mycolor" format="color"/>
+        </declare-styleable>
 </resources>

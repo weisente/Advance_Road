@@ -38,6 +38,7 @@ public class DaoUtil {
         return value;
     }
 
+    //第一个字母大写
     public static String capitalize(String string) {
         if (!TextUtils.isEmpty(string)) {
             return string.substring(0, 1).toUpperCase(Locale.US) + string.substring(1);

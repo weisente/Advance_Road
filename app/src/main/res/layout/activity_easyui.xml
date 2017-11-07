@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+    <!--<example.weisente.top.myTextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:myText="河南Darren"-->
+        <!--app:myTextColor= "#f0f"-->
+        <!--app:myTextSize="20sp"-->
+        <!--/>-->
+    <example.weisente.top.widget.StudyListview
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <!--<exa>-->
+    <!--<example.weisente.top.widget.Mytextview-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:mytext="测试"-->
+
+        <!--android:padding="50dp"-->
+        <!--app:mytextsize="20sp"-->
+        <!--app:mycolor="#f00"-->
+        <!--/>-->
+
+
+</ScrollView>

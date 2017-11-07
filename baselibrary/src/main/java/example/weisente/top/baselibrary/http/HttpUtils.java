@@ -93,7 +93,7 @@ public class HttpUtils {
             get(mUrl, mParams, callBack);
         }
     }
-    //单纯的去执行
+    //单纯的去执行  里面有一个默认的callback
     public void execute(){
         execute(null);
     }

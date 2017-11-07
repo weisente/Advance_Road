@@ -1,1 +1,1 @@
-include ':app', ':baselibrary', ':framelibrary', ':easyui'
+include ':app', ':baselibrary', ':framelibrary'
