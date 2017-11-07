@@ -72,6 +72,8 @@ class AlertController {
     }
 
     public static class AlertParams {
+
+//        new Header
         public Context mContext;
         public int mThemeResId;
         // 点击空白是否能够取消  默认点击阴影可以取消

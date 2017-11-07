@@ -1,6 +1,7 @@
 package example.weisente.top;
 
 import android.app.Application;
+import android.os.Handler;
 
 import com.alipay.euler.andfix.patch.PatchManager;
 
@@ -25,7 +26,7 @@ public class BaseApplication extends Application {
                 .addCallback(new EmptyCallback())
                 .setDefaultCallback(LoadingCallback.class).commit();
 
-
+        new Handler();
 
 
 
