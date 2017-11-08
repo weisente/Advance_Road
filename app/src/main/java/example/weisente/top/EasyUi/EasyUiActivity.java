@@ -1,14 +1,10 @@
 package example.weisente.top.EasyUi;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.animation.DecelerateInterpolator;
 
 import example.weisente.top.R;
-import example.weisente.top.widget.ProgressView;
 
 /**
  * Created by san on 2017/11/7.
@@ -20,20 +16,32 @@ public class EasyUiActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easyui);
-        final ProgressView progressview = (ProgressView)findViewById(R.id.progressView);
-//        progressview.setMaxProgress(100);
-        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 100);
-        valueAnimator.setDuration(2000);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
 
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float currentStep = (float) animation.getAnimatedValue();
-                progressview.setCurrentStep((int)currentStep);
-            }
-        });
-        valueAnimator.start();
+
+
+//        final ProgressView progressview = (ProgressView)findViewById(R.id.progressView);
+////        progressview.setMaxProgress(100);
+//        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 100);
+//        valueAnimator.setDuration(2000);
+//        valueAnimator.setInterpolator(new DecelerateInterpolator());
+//
+//        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                float currentStep = (float) animation.getAnimatedValue();
+//                progressview.setCurrentStep((int)currentStep);
+//            }
+//        });
+//        valueAnimator.start();
+//
+
+
+
+
+
+
+
+
 //        final WalkView walkView = (WalkView) findViewById(R.id.walkview);
 //        walkView.setStepMax(4000);
 //        //一个属性的值  从0到3000
