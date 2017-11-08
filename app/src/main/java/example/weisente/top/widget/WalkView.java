@@ -96,41 +96,13 @@ public class WalkView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-////        Log.e("onDraw--measuredHeight",heigh+"");
-////        Log.e("onDraw--measuredWidth",with+"");
-////        measure(0,0);
-////        int measuredHeight = getMeasuredHeight();
-////        int measuredWidth = getMeasuredWidth();
-//        RectF rectF = new RectF(mBorderWidth/2,mBorderWidth/2
-//                ,getWidth()-mBorderWidth/2,getHeight()-mBorderWidth/2);
-//        // 研究研究
-//
-//        canvas.drawArc(rectF,135,270,false,mOutPaint);
-//
-//        if(mStepMax == 0)return;
-//
-//        float sweepAngle = (float)mCurrentStep/mStepMax;
-//        canvas.drawArc(rectF,135,sweepAngle*270,false,mInnerPaint);
-//
-//        String stepText = mCurrentStep+"";
-//
-//        Rect textBounds = new Rect();
-//        //设置显示框的边距
-//        mTextPaint.getTextBounds(stepText, 0, stepText.length(), textBounds);
-//        int dx = getWidth()/2 - textBounds.width()/2;//找到起始点
-//        // 基线 baseLine
-//        Paint.FontMetricsInt  fontMetrics = mTextPaint.getFontMetricsInt();
-//        //基线
-//        int dy = (fontMetrics.bottom - fontMetrics.top)/2 - fontMetrics.bottom;
-//        int baseLine = getHeight()/2 + dy;
-//        canvas.drawText(stepText,dx,baseLine,mTextPaint);
+
 
         RectF rectF = new RectF(mBorderWidth / 2, mBorderWidth / 2, getWidth() - mBorderWidth / 2, getHeight() - mBorderWidth / 2);
         canvas.drawArc(rectF,135,270,false,mOutPaint);
 
         float sweepAngle = mCurrentStep / mStepMax;
-        canvas.drawArc(rectF,135,270*sweepAngle,false,mOutPaint);
+        canvas.drawArc(rectF,135,270*sweepAngle,false,mInnerPaint);
 
         String stepText = mCurrentStep+"";
         Rect textBounds = new Rect();
