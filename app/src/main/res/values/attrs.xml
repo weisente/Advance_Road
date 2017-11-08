@@ -37,4 +37,11 @@
         <attr name="stepTextColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="RatingBar">
+        <attr name="starNormal" format="reference"/>
+        <attr name="starFocus" format="reference"/>
+        <attr name="gradeNumber" format="integer"/>
+        <attr name="interval" format="dimension"/>
+    </declare-styleable>
+
 </resources>
