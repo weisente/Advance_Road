@@ -17,4 +17,12 @@
         <attr name="stepTextSize" format="dimension" />
         <attr name="stepTextColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="ProgressView">
+        <attr name="MaxProgressColor" format="color" />
+        <attr name="CurrentProgressColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="stepTextSize" format="dimension" />
+        <attr name="stepTextColor" format="color" />
+    </declare-styleable>
 </resources>
