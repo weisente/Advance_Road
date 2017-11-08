@@ -9,4 +9,12 @@
         <attr name="mytextsize" format="dimension"/>
         <attr name="mycolor" format="color"/>
         </declare-styleable>
+
+    <declare-styleable name="QQStepView">
+        <attr name="outerColor" format="color" />
+        <attr name="innerColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="stepTextSize" format="dimension" />
+        <attr name="stepTextColor" format="color" />
+    </declare-styleable>
 </resources>
