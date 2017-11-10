@@ -667,4 +667,7 @@
     <color name="write_comment_hint_text_night">@color/default_text_night</color>
     <color name="write_comment_text">#ff6a6056</color>
     <color name="write_comment_text_night">@color/default_text_night</color>
+
+
+    <color name="main_bg_color">#F00</color>
 </resources>
