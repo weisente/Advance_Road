@@ -20,7 +20,7 @@ public class ViewPagerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        //偷懒
     }
 
     @Override
