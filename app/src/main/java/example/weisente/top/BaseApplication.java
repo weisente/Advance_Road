@@ -1,7 +1,6 @@
 package example.weisente.top;
 
 import android.app.Application;
-import android.os.Handler;
 
 import com.alipay.euler.andfix.patch.PatchManager;
 
@@ -9,6 +8,7 @@ import example.weisente.top.baselibrary.loadpage.LoadManager;
 import example.weisente.top.callback.EmptyCallback;
 import example.weisente.top.callback.ErrorCallback;
 import example.weisente.top.callback.LoadingCallback;
+import example.weisente.top.framelibrary.skin.SkinManager;
 
 /**
  * Created by san on 2017/10/7.
@@ -26,8 +26,8 @@ public class BaseApplication extends Application {
                 .addCallback(new EmptyCallback())
                 .setDefaultCallback(LoadingCallback.class).commit();
 
-        new Handler();
-
+//        new Handler();
+        SkinManager.getInstance().init(this);
 
 
 
