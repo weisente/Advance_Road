@@ -1,13 +1,12 @@
 package example.weisente.top.SkinDemo;
 
-import android.content.Intent;
 import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 
-import example.weisente.top.MainActivity;
 import example.weisente.top.R;
 import example.weisente.top.framelibrary.BaseSkinActivity;
 import example.weisente.top.framelibrary.skin.SkinManager;
@@ -64,8 +63,9 @@ public class SkinActivity extends BaseSkinActivity {
 
     public void skin2(View view){
         // 跳转
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this,MainActivity.class);
+//        startActivity(intent);
+        Toast.makeText(getApplicationContext(),"问题",Toast.LENGTH_SHORT).show();
     }
 //    Activity
 

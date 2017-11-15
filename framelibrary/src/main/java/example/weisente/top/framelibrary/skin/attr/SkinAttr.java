@@ -3,7 +3,8 @@ package example.weisente.top.framelibrary.skin.attr;
 import android.view.View;
 
 /**
- * Created by san on 2017/11/10.
+ * Created by san on 2017/11/15.
+ * 皮肤的属性
  */
 
 public class SkinAttr {

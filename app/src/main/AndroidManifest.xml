@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <!--<activity android:name=".SecondActivity"></activity>-->
 
-        <activity android:name=".EasyUi.EasyUiActivity">
+        <activity android:name=".SkinDemo.SkinActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
