@@ -669,5 +669,5 @@
     <color name="write_comment_text_night">@color/default_text_night</color>
 
 
-    <color name="main_bg_color">#F00</color>
+    <color name="main_bg_color">#0F0</color>
 </resources>

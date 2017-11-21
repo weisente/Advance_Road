@@ -18,6 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import example.weisente.top.baselibrary.base.BaseActivity;
+import example.weisente.top.framelibrary.skin.SkinManager;
+import example.weisente.top.framelibrary.skin.SkinResource;
+import example.weisente.top.framelibrary.skin.attr.SkinAttr;
+import example.weisente.top.framelibrary.skin.attr.SkinView;
+import example.weisente.top.framelibrary.skin.callback.ISkinChangeListener;
+import example.weisente.top.framelibrary.skin.support.SkinAppCompatViewInflater;
+import example.weisente.top.framelibrary.skin.support.SkinAttrSupport;
 
 /**
  * Created by san on 2017/10/7.
@@ -25,7 +32,7 @@ import example.weisente.top.baselibrary.base.BaseActivity;
  * LayoutInflaterFactory
  */
 
-public abstract class BaseSkinActivity  extends BaseActivity implements LayoutInflaterFactory {
+public abstract class BaseSkinActivity  extends BaseActivity implements LayoutInflaterFactory, ISkinChangeListener {
     // 后面会写插件换肤 预留的东西
     private SkinAppCompatViewInflater mAppCompatViewInflater;
 
@@ -126,4 +133,15 @@ public abstract class BaseSkinActivity  extends BaseActivity implements LayoutIn
         }
     }
 
+    @Override
+    public void changeSkin(SkinResource skinResource) {
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SkinManager.getInstance().unregister(this);
+    }
 }

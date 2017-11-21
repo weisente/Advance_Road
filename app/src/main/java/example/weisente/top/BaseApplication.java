@@ -1,6 +1,7 @@
 package example.weisente.top;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.alipay.euler.andfix.patch.PatchManager;
 
@@ -27,6 +28,7 @@ public class BaseApplication extends Application {
                 .setDefaultCallback(LoadingCallback.class).commit();
 
 //        new Handler();
+        Log.e("测试","进来了");
         SkinManager.getInstance().init(this);
 
 

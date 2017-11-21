@@ -1,6 +1,7 @@
 package example.weisente.top.SkinDemo;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -51,8 +52,11 @@ public class SkinActivity extends BaseSkinActivity {
 
         String SkinPath = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + File.separator +"red.skin";
+//        SkinManager.getInstance().register(this,);
         // 换肤
         int result = SkinManager.getInstance().loadSkin(SkinPath);
+        Log.e("测试","SkinPath  = "+SkinPath);
+        Log.e("测试","result  = "+result);
     }
 
     public void skin1(View view){
