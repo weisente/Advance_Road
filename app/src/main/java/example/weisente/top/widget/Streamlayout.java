@@ -18,18 +18,20 @@ public class Streamlayout extends ViewGroup{
 
     private List<List<View>> mChildViews = new ArrayList<>();
 
-    //代码生成
+    private StreamLayoutBaseAdapter mAdapter;
+
     public Streamlayout(Context context) {
         super(context);
     }
-    //这个是XML生成
+
     public Streamlayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    //XML生成而且带style
+
     public Streamlayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
     // 2.1 onMeasure() 指定宽高
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -55,20 +57,26 @@ public class Streamlayout extends ViewGroup{
         int maxHeight = 0;
 
         for (int i = 0; i < childCount; i++) {
+
             // 2.1.1 for循环测量子View
             View childView = getChildAt(i);
+
+            if(childView.getVisibility() == GONE){
+                continue;
+            }
+
             // 这段话执行之后就可以获取子View的宽高，因为会调用子View的onMeasure
-            measureChild(childView, 0, 0);
+            measureChild(childView, widthMeasureSpec, heightMeasureSpec);
 
             // margin值 ViewGroup.LayoutParams 没有 就用系统的MarginLayoutParams
             // 想想 LinearLayout为什么有？
             // LinearLayout有自己的 LayoutParams  会复写一个非常重要的方法
-            ViewGroup.MarginLayoutParams params = (MarginLayoutParams) childView.getLayoutParams();
+            MarginLayoutParams params = (MarginLayoutParams) childView.getLayoutParams();
 
             // 什么时候需要换行，一行不够的情况下 考虑 margin
             if (lineWidth + (childView.getMeasuredWidth() + params.rightMargin + params.leftMargin) > width) {
                 // 换行,累加高度  加上一行条目中最大的高度
-                height += childView.getMeasuredHeight() + params.bottomMargin + params.topMargin;
+                height += maxHeight;
                 lineWidth = childView.getMeasuredWidth() + params.rightMargin + params.leftMargin;
                 childViews = new ArrayList<>();
                 mChildViews.add(childViews);
@@ -113,27 +121,53 @@ public class Streamlayout extends ViewGroup{
 
         for (List<View> childViews : mChildViews) {
             left = getPaddingLeft();
-
+            int maxHeight = 0;
             for (View childView : childViews) {
-                ViewGroup.MarginLayoutParams params = (MarginLayoutParams) childView.getLayoutParams();
+
+                if(childView.getVisibility() == GONE){
+                    continue;
+                }
+
+                MarginLayoutParams params = (MarginLayoutParams) childView.getLayoutParams();
                 left += params.leftMargin;
                 int childTop = top + params.topMargin;
                 right = left + childView.getMeasuredWidth();
                 bottom = childTop + childView.getMeasuredHeight();
-//                Log.e("TAG", childView.toString());
-//
-//                Log.e("TAG", "left -> " + left + " top-> " + childTop + " right -> " + right + " bottom-> " + bottom);
-
                 // 摆放
                 childView.layout(left, childTop, right, bottom);
                 // left 叠加
                 left += childView.getMeasuredWidth() + params.rightMargin;
+
+                // 不断的叠加top值
+                int childHeight = childView.getMeasuredHeight()+ params.topMargin+params.bottomMargin;
+                maxHeight = Math.max(maxHeight,childHeight);
             }
 
-            // 不断的叠加top值
-            ViewGroup.MarginLayoutParams params = (MarginLayoutParams) childViews.get(0).getLayoutParams();
-            top += childViews.get(0).getMeasuredHeight() + params.topMargin + params.bottomMargin;
+            top += maxHeight;
         }
     }
 
+    /**
+     * 设置Adapter
+     * @param adapter
+     */
+    public void setAdapter(StreamLayoutBaseAdapter adapter){
+        if(adapter == null){
+            // 抛空指针异常
+        }
+
+        // 清空所有子View
+        removeAllViews();
+
+        mAdapter = adapter;
+
+        // 获取数量
+        int childCount = mAdapter.getCount();
+        for (int i=0;i<childCount;i++){
+            // 通过位置获取View
+            View childView = mAdapter.getView(i,this);
+
+            addView(childView);
+        }
+    }
 }
