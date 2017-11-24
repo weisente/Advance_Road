@@ -3,11 +3,18 @@ package example.weisente.top.EasyUi;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import example.weisente.top.R;
+
 
 /**
  * Created by san on 2017/11/7.
@@ -15,16 +22,25 @@ import example.weisente.top.R;
 
 public class EasyUiActivity extends Activity {
 
+    private List<String> mItems;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_easyui);
+        setContentView(R.layout.activity_easyuiv3);
 
 
-        new BaseAdapter() {
+        mItems = new ArrayList<String>();
+
+        for (int i=0;i<200;i++){
+            mItems.add("i -> "+i);
+        }
+        ListView mListView = (ListView) findViewById(R.id.list_view);
+
+        mListView.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
-                return 0;
+                return mItems.size();
             }
 
             @Override
@@ -39,9 +55,34 @@ public class EasyUiActivity extends Activity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                return null;
+                TextView item = (TextView) LayoutInflater.from(EasyUiActivity.this)
+                        .inflate(R.layout.item_lv, parent, false);
+                item.setText(mItems.get(position));
+                return item;
             }
-        };
+        });
+
+//        new BaseAdapter() {
+//            @Override
+//            public int getCount() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public Object getItem(int position) {
+//                return null;
+//            }
+//
+//            @Override
+//            public long getItemId(int position) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public View getView(int position, View convertView, ViewGroup parent) {
+//                return null;
+//            }
+//        };
 
 
 //        final ProgressView progressview = (ProgressView)findViewById(R.id.progressView);
