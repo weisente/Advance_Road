@@ -60,6 +60,7 @@ public class VerticalDragListView extends FrameLayout {
     }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         mDragHelper.processTouchEvent(event);
         return true;
     }
