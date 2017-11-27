@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <!--<activity android:name=".SecondActivity"></activity>-->
 
-        <activity android:name=".ParallaxDemo.ParallaxActivity">
+        <activity android:name=".AOPDemo.AOPActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
