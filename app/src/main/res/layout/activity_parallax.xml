@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<example.weisente.top.ParallaxDemo.ParallaxViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/parallax_vp"
+    android:background="@android:color/holo_orange_dark"
+    android:layout_height="match_parent">
+
+</example.weisente.top.ParallaxDemo.ParallaxViewPager>

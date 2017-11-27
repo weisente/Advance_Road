@@ -40,5 +40,6 @@ dependencies {
     //    compile project(':baselibrary')
     //    compile project(':annotation')
     compile project(':framelibrary')
+    compile 'com.android.support:percent:26.+'
 //    compile project(':easyui')
 }

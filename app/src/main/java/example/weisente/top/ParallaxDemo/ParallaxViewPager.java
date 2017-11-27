@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ import example.weisente.top.R;
 
 public class ParallaxViewPager extends ViewPager {
     private List<ParallaxFragment> mFragments;
-
     public ParallaxViewPager(Context context) {
         this(context,null);
     }
@@ -33,12 +33,12 @@ public class ParallaxViewPager extends ViewPager {
     }
 
     /**
-     *
-     * @param fm
+     * 设置布局数组
      * @param layoutIds
      */
-    public void setLayout(FragmentManager fm,int[] layoutIds){
+    public void setLayout(FragmentManager fm,int[] layoutIds) {
         mFragments.clear();
+        // 实例化Fragment
         for (int layoutId : layoutIds) {
             ParallaxFragment fragment = new ParallaxFragment();
             Bundle bundle = new Bundle();
@@ -49,19 +49,25 @@ public class ParallaxViewPager extends ViewPager {
         // 设置我们的 ViewPager 的Adapter
         setAdapter(new ParallaxPagerAdapter(fm));
 
+        // 2.2.3 监听滑动滚动改变位移
         addOnPageChangeListener(new OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // 滚动  position 当前位置    positionOffset 0-1     positionOffsetPixels 0-屏幕的宽度px
+                Log.e("TAG","position->"+position+" positionOffset->"+positionOffset+" positionOffsetPixels->"+positionOffsetPixels);
+
+                // 获取左out 右 in
                 ParallaxFragment outFragment = mFragments.get(position);
-                //获取fragment里面的所有view
                 List<View> parallaxViews = outFragment.getParallaxViews();
-                for (View parallaxView : parallaxViews){
+                for (View parallaxView : parallaxViews) {
                     ParallaxTag tag = (ParallaxTag) parallaxView.getTag(R.id.parallax_tag);
-                    // 为什么这样写 ？
-                    parallaxView.setTranslationX((-positionOffsetPixels)*tag.translationXOut);
+                    // 为什么这样写 ？                    parallaxView.setTranslationX((-positionOffsetPixels)*tag.translationXOut);
+
+                    Log.e("测试",(-positionOffsetPixels)*tag.translationXOut+"");
                     parallaxView.setTranslationY((-positionOffsetPixels)*tag.translationYOut);
+
                 }
-                //获取下一个fragment
+
                 try {
                     ParallaxFragment inFragment = mFragments.get(position+1);
                     parallaxViews = inFragment.getParallaxViews();
@@ -71,11 +77,12 @@ public class ParallaxViewPager extends ViewPager {
                         parallaxView.setTranslationY((getMeasuredWidth()-positionOffsetPixels)*tag.translationYIn);
                     }
                 }catch (Exception e){}
+
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                // 选择切换完毕
             }
 
             @Override
@@ -85,10 +92,7 @@ public class ParallaxViewPager extends ViewPager {
         });
     }
 
-
-
-
-    private class ParallaxPagerAdapter extends FragmentPagerAdapter {
+    private class ParallaxPagerAdapter extends FragmentPagerAdapter{
 
         public ParallaxPagerAdapter(FragmentManager fm) {
             super(fm);

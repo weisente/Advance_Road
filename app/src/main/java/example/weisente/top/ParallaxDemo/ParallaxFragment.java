@@ -31,7 +31,7 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
     public static final String LAYOUT_ID_KEY = "LAYOUT_ID_KEY";
     private CompatViewInflater mCompatViewInflater;
 
-    // 存放所有的需要位移的View    fragment的所有view集合
+    // 存放所有的需要位移的View
     private List<View> mParallaxViews = new ArrayList<>();
 
     private int[] mParallaxAttrs = new int[]{R.attr.translationXIn,
@@ -46,31 +46,36 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
         // View创建的时候 我们去解析属性  这里传 inflater 有没有问题？ 单例设计模式 代表着所有的View的创建都会是该 Fragment 去创建的
         inflater = inflater.cloneInContext(getActivity());// 克隆一个出来
         LayoutInflaterCompat.setFactory(inflater, this);
-
         return inflater.inflate(layoutId, container, false);
     }
-    //这里的主要目的是对view的生成进行拦截
+
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         // View都会来这里,创建View
         // 拦截到View的创建  获取View之后要去解析
         // 1. 创建View
+        // If the Factory didn't handle it, let our createView() method try
         View view = createView(parent, name, context, attrs);
-        //必须对生成的view 进行分析tag
+
+        // 2.1 一个activity的布局肯定对应多个这样的 SkinView
         if (view != null) {
             // Log.e("TAG", "我来创建View");
             // 解析所有的我们自己关注属性
             analysisAttrs(view, context, attrs);
         }
-        return null;
+        return view;
     }
 
-    private void analysisAttrs(View view, Context context, AttributeSet attrs){
+    private void analysisAttrs(View view, Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, mParallaxAttrs);
-        if (array != null && array.getIndexCount() != 0){
+        if (array != null && array.getIndexCount() != 0) {
+           /* float xIn = array.getFloat(0,0f);
+            float xOut = array.getFloat(1,0f);
+            float yIn = array.getFloat(2,0f);
+            float yOut = array.getFloat(3,0f);*/
             int n = array.getIndexCount();
             ParallaxTag tag = new ParallaxTag();
-            for (int i = 0; i < n; i++){
+            for (int i = 0; i < n; i++) {
                 int attr = array.getIndex(i);
                 switch (attr) {
                     case 0:
@@ -87,20 +92,19 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
                         break;
                 }
             }
+            // 自定义属性怎么存? 还要一一绑定  在View上面设置一个tag
             view.setTag(R.id.parallax_tag,tag);
+            //Log.e("TAG",tag.toString());
             mParallaxViews.add(view);
         }
         array.recycle();
     }
 
-
     public View createView(View parent, final String name, @NonNull Context context,
                            @NonNull AttributeSet attrs) {
-        //版本是否在android 21 之前
         final boolean isPre21 = Build.VERSION.SDK_INT < 21;
 
         if (mCompatViewInflater == null) {
-            //CompatViewInflater  如何拦截view 生成的具体内容
             mCompatViewInflater = new CompatViewInflater();
         }
 
@@ -137,6 +141,7 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
             parent = parent.getParent();
         }
     }
+
     public List<View> getParallaxViews() {
         return mParallaxViews;
     }
