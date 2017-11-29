@@ -1,12 +1,11 @@
 package example.weisente.top.AOPDemo;
 
-import android.Manifest;
 import android.view.View;
 import android.widget.Toast;
 
 import example.weisente.top.R;
-import example.weisente.top.baselibrary.annotation.CheckNet;
-import example.weisente.top.baselibrary.annotation.Permission;
+import example.weisente.top.baselibrary.annotation.SingleClick;
+import example.weisente.top.baselibrary.annotation.TimeLog;
 import example.weisente.top.baselibrary.base.BaseActivity;
 
 /**
@@ -34,10 +33,23 @@ public class AOPActivity extends BaseActivity {
         setContentView(R.layout.activity_aop);
     }
 
-    @CheckNet
-    @Permission({Manifest.permission.WRITE_CONTACTS,Manifest.permission.CAMERA})
+//    @CheckNet
+
+
+    @TimeLog
+    @SingleClick
     public void check(View view){
         Toast.makeText(getApplicationContext(),"点击通过",Toast.LENGTH_SHORT).show();
+        waste();
 //        MPermissionUtils.requestPermissionsResult();
     }
+
+    private void waste(){
+        for (int i = 0;i <1000;i++){
+
+        }
+    }
+
+//    @Permission({Manifest.permission.WRITE_CONTACTS, Manifest.permission.CAMERA})
+
 }
