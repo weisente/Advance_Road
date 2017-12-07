@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme">
         <!--<activity android:name=".SecondActivity"></activity>-->
 
-        <activity android:name=".AOPDemo.AOPActivity">
+        <activity android:name=".BottomTabDemo.TabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
